@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import AboutUs from '../components/AboutUs.astro';
+import Services from '../components/Services.astro';
+import Reviews from '../components/Reviews.astro';
+import Gallery from '../components/Gallery.astro';
+import CTA from '../components/CTA.astro';
+import Contact from '../components/Contact.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <!-- Sticky Global Header/Navbar -->
+  <Header />
+
+  <main>
+    <!-- Hero Section -->
+    <Hero />
+
+    <!-- About Us Section -->
+    <AboutUs />
+
+    <!-- Services / Treatments Section -->
+    <Services />
+
+    <!-- Testimonials / Client Reviews Section -->
+    <Reviews />
+
+    <!-- Interactive Experiential Image Gallery -->
+    <Gallery />
+
+    <!-- Interactive Call-To-Action Banner -->
+    <CTA />
+
+    <!-- Booking Contact Form & Location Section -->
+    <Contact />
+  </main>
+
+  <!-- Global Regulatory & Legal Footer -->
+  <Footer />
+
+  <!-- Floating Glowing WhatsApp Button Widget -->
+  <WhatsAppButton />
+</Layout>

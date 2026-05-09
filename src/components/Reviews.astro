@@ -1,0 +1,98 @@
+---
+interface ReviewItem {
+  name: string;
+  treatment: string;
+  rating: number;
+  content: string;
+  date: string;
+}
+
+const reviews: ReviewItem[] = [
+  {
+    name: "Valentina Bianco",
+    treatment: "Ácido Hialurónico Labios",
+    rating: 5,
+    content: "Tenía muchísimo miedo de que mis labios quedaran artificiales, pero la Dra. se tomó el tiempo de analizar mis facciones. Logró un volumen súper sutil y perfilado que simplemente resalta mi boca. ¡La atención en Recoleta es un diez!",
+    date: "Hace 2 semanas"
+  },
+  {
+    name: "Delfina Solís",
+    treatment: "Baby Botox & Peeling Químico",
+    rating: 5,
+    content: "Increíble experiencia. El Baby Botox me sacó el aire de cansancio de la frente sin dejarme el rostro 'congelado'. Sigo teniendo toda mi expresividad pero mi piel está más lisa y radiante que nunca. Los recomiendo con los ojos cerrados.",
+    date: "Hace 1 mes"
+  },
+  {
+    name: "Agustina Paz",
+    treatment: "Higiene Facial Premium Aura",
+    rating: 5,
+    content: "Es mi ritual mensual obligado. El espacio es un templo de paz y relajación total. El tratamiento es sumamente completo, las camillas son ultra cómodas y los productos huelen increíble. Salgo siempre flotando de la clínica.",
+    date: "Hace 3 días"
+  }
+];
+---
+
+<section id="opiniones" class="relative py-24 md:py-32 bg-brand-bg overflow-hidden">
+  <!-- Decorative absolute nodes -->
+  <div class="absolute inset-0 pointer-events-none opacity-30">
+    <div class="absolute top-[10%] left-[5%] w-[45%] h-[55%] bg-brand-sage-light/30 clip-leaf-left blur-3xl"></div>
+    <div class="absolute -bottom-[15%] right-[5%] w-[45%] h-[55%] bg-brand-champagne-light/35 clip-leaf-right blur-3xl animate-pulse-soft"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    
+    <!-- Header info -->
+    <div class="text-center max-w-2xl mx-auto space-y-4 mb-16 animate-fade-up">
+      <span class="font-sans text-xs tracking-[0.2em] uppercase font-semibold text-brand-sage-dark">Experiencias Aura</span>
+      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-brand-dark">
+        Lo que dicen <span class="font-medium italic text-brand-sage-dark">quienes confían</span> en nosotros
+      </h2>
+      <p class="font-sans text-sm md:text-base text-brand-dark-soft font-light">
+        La satisfacción de nuestras pacientes es el testimonio de nuestro compromiso con la excelencia médica y la armonía estética.
+      </p>
+    </div>
+
+    <!-- Review Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {reviews.map((rev) => (
+        <div class="p-8 bg-white border border-brand-sage/10 rounded-3xl shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between group">
+          <div class="space-y-6">
+            <!-- Stars rating -->
+            <div class="flex items-center gap-1 text-brand-champagne">
+              {Array.from({ length: rev.rating }).map(() => (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                  <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+                </svg>
+              ))}
+            </div>
+
+            <!-- Content text -->
+            <blockquote class="font-sans text-sm md:text-base text-brand-dark-soft/95 font-light leading-relaxed italic relative">
+              "{rev.content}"
+              
+              <!-- Soft design quote element behind -->
+              <span class="absolute -top-4 -left-2 text-brand-sage-light text-5xl font-display font-bold select-none opacity-20 pointer-events-none">“</span>
+            </blockquote>
+          </div>
+
+          <!-- Bottom Client Profile info -->
+          <div class="pt-6 mt-8 border-t border-brand-sage/10 flex items-center justify-between">
+            <div class="space-y-1">
+              <span class="block font-display text-base font-semibold text-brand-dark group-hover:text-brand-sage transition-colors duration-300">
+                {rev.name}
+              </span>
+              <span class="block font-sans text-xs text-brand-sage-dark font-medium uppercase tracking-wider">
+                {rev.treatment}
+              </span>
+            </div>
+            
+            <span class="font-sans text-[11px] text-brand-dark-soft/50 font-light">
+              {rev.date}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

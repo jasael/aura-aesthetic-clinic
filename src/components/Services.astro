@@ -1,0 +1,192 @@
+---
+interface ServiceItem {
+  title: string;
+  category: string;
+  price: string;
+  duration: string;
+  description: string;
+  isPopular?: boolean;
+}
+
+const services: ServiceItem[] = [
+  {
+    title: "Toxina Botulínica (Baby Botox)",
+    category: "inyectables",
+    price: "$120.000",
+    duration: "30 min",
+    description: "Relajación muscular sutil y elegante de líneas de expresión en frente, entrecejo y patas de gallo manteniendo la naturalidad.",
+    isPopular: true
+  },
+  {
+    title: "Armonización con Ácido Hialurónico",
+    category: "inyectables",
+    price: "$165.000",
+    duration: "45 min",
+    description: "Aumento de volumen e hidratación labial, o definición del arco mandibular utilizando productos de la más alta calidad internacional.",
+  },
+  {
+    title: "Peeling Químico Regenerativo",
+    category: "facial",
+    price: "$35.000",
+    duration: "40 min",
+    description: "Renovación celular profunda que unifica el tono, reduce manchas y difumina líneas finas mediante ácidos seleccionados a medida.",
+  },
+  {
+    title: "Higiene Facial Premium Aura",
+    category: "facial",
+    price: "$28.000",
+    duration: "60 min",
+    description: "Tratamiento descongestivo profundo con microdermoabrasión con punta de diamante, peeling ultrasónico y máscara de hidratación.",
+    isPopular: true
+  },
+  {
+    title: "Modelado Corporal con Velashape",
+    category: "corporal",
+    price: "$45.000",
+    duration: "50 min",
+    description: "Tecnología no invasiva que combina radiofrecuencia, infrarrojos y vacumterapia para reducir celulitis y modelar el contorno.",
+  },
+  {
+    title: "Drenaje Linfático Manual",
+    category: "corporal",
+    price: "$22.000",
+    duration: "60 min",
+    description: "Terapia manual suave y rítmica destinada a estimular la eliminación de toxinas, reducir la retención de líquidos y desinflamar.",
+  }
+];
+
+const categories = [
+  { id: "todos", label: "Ver Todos" },
+  { id: "facial", label: "Facial" },
+  { id: "corporal", label: "Corporal" },
+  { id: "inyectables", label: "Inyectables" }
+];
+---
+
+<section id="servicios" class="relative py-24 md:py-32 bg-brand-champagne-light/10 overflow-hidden">
+  <!-- Subtle curve separator matching design standards -->
+  <div class="absolute top-0 left-0 w-full h-16 bg-brand-bg clip-curve-bottom"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10 pt-8">
+    
+    <!-- Section Headings -->
+    <div class="text-center max-w-2xl mx-auto space-y-4 mb-16 animate-fade-up">
+      <span class="font-sans text-xs tracking-[0.2em] uppercase font-semibold text-brand-sage-dark">Nuestros Tratamientos</span>
+      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-brand-dark">
+        Servicios médicos <span class="font-medium italic text-brand-sage-dark">exclusivos</span> diseñados para vos
+      </h2>
+      <p class="font-sans text-sm md:text-base text-brand-dark-soft font-light">
+        Combinamos tecnologías aprobadas internacionalmente con protocolos médicos personalizados para resaltar tu belleza de forma sutil y segura.
+      </p>
+    </div>
+
+    <!-- Category Selector Tabs (Client-Side Interactive Filters) -->
+    <div class="flex justify-center flex-wrap gap-2 md:gap-3 mb-12">
+      {categories.map((cat, idx) => (
+        <button
+          data-category-btn={cat.id}
+          class={`px-6 py-2.5 font-display text-xs tracking-widest uppercase font-medium rounded-full transition-all duration-300 border focus:outline-none ${
+            idx === 0
+              ? "bg-brand-sage text-brand-bg border-brand-sage shadow-md"
+              : "bg-white text-brand-dark-soft border-brand-sage/20 hover:border-brand-sage hover:text-brand-dark shadow-sm"
+          }`}
+        >
+          {cat.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Services Grid List -->
+    <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map((service) => (
+        <div
+          data-service-category={service.category}
+          class={`relative flex flex-col justify-between p-8 bg-white border rounded-3xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1.5 group ${
+            service.isPopular 
+              ? "border-brand-sage/40 shadow-md ring-1 ring-brand-sage/10" 
+              : "border-brand-sage/10 shadow-sm"
+          }`}
+        >
+          <!-- Popular Ribbon Badge -->
+          {service.isPopular && (
+            <div class="absolute top-4 right-4 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-brand-sage/15 text-brand-sage-dark font-sans text-[10px] font-semibold uppercase tracking-wider">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3">
+                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+              </svg>
+              Destacado
+            </div>
+          )}
+
+          <div class="space-y-4">
+            <!-- Category Tag -->
+            <span class="block font-sans text-[10px] uppercase tracking-widest font-bold text-brand-sage-dark/80">
+              {service.category}
+            </span>
+            
+            <!-- Service Title -->
+            <h3 class="font-display text-lg md:text-xl font-semibold text-brand-dark group-hover:text-brand-sage transition-colors duration-300">
+              {service.title}
+            </h3>
+
+            <!-- Service Description -->
+            <p class="font-sans text-xs md:text-sm text-brand-dark-soft/95 font-light leading-relaxed">
+              {service.description}
+            </p>
+          </div>
+
+          <!-- Bottom Price Area -->
+          <div class="pt-6 mt-8 border-t border-brand-sage/10 flex items-center justify-between">
+            <div class="space-y-0.5">
+              <span class="block font-sans text-[10px] tracking-wider uppercase text-brand-dark-soft/50 font-medium">Desde</span>
+              <span class="block font-display text-xl font-medium text-brand-dark">{service.price}</span>
+            </div>
+            
+            <!-- Price and Duration details -->
+            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-bg border border-brand-sage/10 text-brand-dark-soft font-sans text-xs">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+              {service.duration}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Dynamic client-side categorization filters
+  const categoryButtons = document.querySelectorAll("[data-category-btn]");
+  const serviceCards = document.querySelectorAll("[data-service-category]");
+
+  categoryButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const selectedCategory = btn.getAttribute("data-category-btn");
+
+      // Update button styles
+      categoryButtons.forEach((otherBtn) => {
+        otherBtn.classList.remove("bg-brand-sage", "text-brand-bg", "border-brand-sage", "shadow-md");
+        otherBtn.classList.add("bg-white", "text-brand-dark-soft", "border-brand-sage/20", "hover:border-brand-sage", "hover:text-brand-dark", "shadow-sm");
+      });
+
+      btn.classList.add("bg-brand-sage", "text-brand-bg", "border-brand-sage", "shadow-md");
+      btn.classList.remove("bg-white", "text-brand-dark-soft", "border-brand-sage/20", "hover:border-brand-sage", "hover:text-brand-dark", "shadow-sm");
+
+      // Filter cards
+      serviceCards.forEach((card) => {
+        const cardCategory = card.getAttribute("data-service-category");
+
+        if (selectedCategory === "todos" || cardCategory === selectedCategory) {
+          card.classList.remove("hidden");
+          // Add quick scale transition
+          card.classList.add("animate-fade-in");
+        } else {
+          card.classList.add("hidden");
+          card.classList.remove("animate-fade-in");
+        }
+      });
+    });
+  });
+</script>

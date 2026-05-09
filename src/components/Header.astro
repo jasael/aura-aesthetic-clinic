@@ -1,0 +1,102 @@
+---
+---
+
+<header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 glass-luxe-light border-b border-brand-sage/10 shadow-sm">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <!-- Brand Logo -->
+    <a href="#inicio" class="flex items-center gap-2 group">
+      <span class="font-display text-2xl font-semibold tracking-[0.2em] text-brand-dark-soft group-hover:text-brand-sage transition-colors duration-300">AURA</span>
+      <div class="w-1.5 h-1.5 rounded-full bg-brand-sage group-hover:bg-brand-champagne transition-colors duration-300"></div>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="#inicio" class="font-sans text-sm tracking-wider font-medium text-brand-dark-soft hover:text-brand-sage transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Inicio</a>
+      <a href="#sobre-nosotros" class="font-sans text-sm tracking-wider font-medium text-brand-dark-soft hover:text-brand-sage transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Sobre Nosotros</a>
+      <a href="#servicios" class="font-sans text-sm tracking-wider font-medium text-brand-dark-soft hover:text-brand-sage transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Servicios</a>
+      <a href="#opiniones" class="font-sans text-sm tracking-wider font-medium text-brand-dark-soft hover:text-brand-sage transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Opiniones</a>
+      <a href="#galeria" class="font-sans text-sm tracking-wider font-medium text-brand-dark-soft hover:text-brand-sage transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Galería</a>
+      <a href="#contacto" class="font-sans text-sm tracking-wider font-medium text-brand-dark-soft hover:text-brand-sage transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Contacto</a>
+    </nav>
+
+    <!-- Call to Action Button (Desktop) -->
+    <div class="hidden md:block">
+      <a href="#contacto" class="inline-flex items-center justify-center px-6 py-2.5 bg-brand-sage hover:bg-brand-sage-dark text-brand-bg font-display text-xs tracking-widest uppercase font-medium rounded-sm transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5">
+        Reservar Turno
+      </a>
+    </div>
+
+    <!-- Burger Button (Mobile) -->
+    <button id="menu-toggle" class="md:hidden flex flex-col justify-between w-6 h-4.5 text-brand-dark focus:outline-none z-50" aria-label="Toggle Menu">
+      <span class="w-full h-[1.5px] bg-current transition-all duration-300 origin-left"></span>
+      <span class="w-full h-[1.5px] bg-current transition-all duration-300"></span>
+      <span class="w-full h-[1.5px] bg-current transition-all duration-300 origin-left"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Dropdown Navigation -->
+  <div id="mobile-menu" class="fixed inset-0 w-full h-screen bg-brand-bg/98 z-40 flex flex-col items-center justify-center gap-8 translate-x-full transition-transform duration-500 ease-in-out md:hidden">
+    <!-- Background abstract curves for mobile menu -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
+      <div class="absolute -top-[10%] -left-[10%] w-[60%] h-[40%] bg-brand-sage-light clip-leaf-right blur-3xl"></div>
+      <div class="absolute -bottom-[10%] -right-[10%] w-[60%] h-[40%] bg-brand-champagne-light clip-leaf-left blur-3xl"></div>
+    </div>
+
+    <a href="#inicio" class="mobile-nav-link font-display text-2xl tracking-[0.1em] text-brand-dark hover:text-brand-sage transition-colors duration-300">Inicio</a>
+    <a href="#sobre-nosotros" class="mobile-nav-link font-display text-2xl tracking-[0.1em] text-brand-dark hover:text-brand-sage transition-colors duration-300">Sobre Nosotros</a>
+    <a href="#servicios" class="mobile-nav-link font-display text-2xl tracking-[0.1em] text-brand-dark hover:text-brand-sage transition-colors duration-300">Servicios</a>
+    <a href="#opiniones" class="mobile-nav-link font-display text-2xl tracking-[0.1em] text-brand-dark hover:text-brand-sage transition-colors duration-300">Opiniones</a>
+    <a href="#galeria" class="mobile-nav-link font-display text-2xl tracking-[0.1em] text-brand-dark hover:text-brand-sage transition-colors duration-300">Galería</a>
+    <a href="#contacto" class="mobile-nav-link font-display text-2xl tracking-[0.1em] text-brand-dark hover:text-brand-sage transition-colors duration-300">Contacto</a>
+
+    <a href="#contacto" class="mobile-nav-link mt-4 inline-flex items-center justify-center px-8 py-3 bg-brand-sage text-brand-bg font-display text-sm tracking-widest uppercase font-medium rounded-sm shadow-md">
+      Reservar Turno
+    </a>
+  </div>
+</header>
+
+<script>
+  const toggleBtn = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navLinks = document.querySelectorAll('.mobile-nav-link');
+  let isOpen = false;
+
+  function toggleMenu() {
+    isOpen = !isOpen;
+    if (isOpen) {
+      mobileMenu.classList.remove('translate-x-full');
+      // Burger animations
+      toggleBtn.children[0].style.transform = 'rotate(45deg) scaleX(1.1)';
+      toggleBtn.children[1].style.opacity = '0';
+      toggleBtn.children[2].style.transform = 'rotate(-45deg) scaleX(1.1)';
+      document.body.style.overflow = 'hidden'; // Stop page scrolling when menu is open
+    } else {
+      mobileMenu.classList.add('translate-x-full');
+      // Burger animations reset
+      toggleBtn.children[0].style.transform = 'none';
+      toggleBtn.children[1].style.opacity = '1';
+      toggleBtn.children[2].style.transform = 'none';
+      document.body.style.overflow = '';
+    }
+  }
+
+  toggleBtn?.addEventListener('click', toggleMenu);
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (isOpen) toggleMenu();
+    });
+  });
+
+  // Header transparent to white-blur transition on scroll
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 20) {
+      header?.classList.add('py-1', 'shadow-md');
+      header?.classList.remove('shadow-sm');
+    } else {
+      header?.classList.remove('py-1', 'shadow-md');
+      header?.classList.add('shadow-sm');
+    }
+  });
+</script>

@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  /* Premium Aura Color System */
+  --color-brand-bg: #FAF9F6;               /* Luxury Off-White / Alabaster */
+  --color-brand-sage: #8DA399;             /* Elegant clinical sage green */
+  --color-brand-sage-light: #EAEFEF;       /* Soft fresh clinical backdrop */
+  --color-brand-sage-dark: #3F5249;        /* Warm forest dark focus */
+  --color-brand-champagne: #D9C3B0;        /* Luxurious rose-cream champagne */
+  --color-brand-champagne-light: #F4EFEA;  /* Golden warmth tint */
+  --color-brand-dark: #1C2421;             /* High contrast deep organic slate */
+  --color-brand-dark-soft: #485751;        /* Muted body text carbon */
+
+  /* Premium Typography Contract */
+  --font-display: "Outfit", sans-serif;
+  --font-sans: "Inter", sans-serif;
+
+  /* Elegant Transitions and Animations */
+  --animate-fade-in: elegant-fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-up: elegant-fade-up 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-right: elegant-fade-right 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-pulse-soft: pulse-soft 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float-slow: float-slow 8s ease-in-out infinite;
+
+  @keyframes elegant-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes elegant-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(35px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes elegant-fade-right {
+    from {
+      opacity: 0;
+      transform: translateX(-35px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.85;
+      transform: scale(1.02);
+    }
+  }
+
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-15px) rotate(2deg);
+    }
+  }
+}
+
+/* Custom CSS Shapes & Utilities (GDE Creative Standards) */
+@utility clip-curve-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+}
+
+@utility clip-curve-top-bottom {
+  clip-path: polygon(0 8%, 100% 0, 100% 92%, 0% 100%);
+}
+
+@utility clip-leaf-right {
+  border-radius: 0% 100% 0% 100% / 0% 100% 0% 100%;
+}
+
+@utility clip-leaf-left {
+  border-radius: 100% 0% 100% 0% / 100% 0% 100% 0%;
+}
+
+@utility clip-circle-dec {
+  clip-path: circle(50% at 50% 50%);
+}
+
+/* Glassmorphism Luxury Overlays */
+@utility glass-luxe-dark {
+  background: rgba(28, 36, 33, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@utility glass-luxe-light {
+  background: rgba(250, 249, 246, 0.65);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* Smooth Scrolling Anchor Tweaks */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Offset for sticky header height */
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF9F6;
+}
+::-webkit-scrollbar-thumb {
+  background: #8DA399;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3F5249;
+}

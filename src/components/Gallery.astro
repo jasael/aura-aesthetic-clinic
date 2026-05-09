@@ -1,0 +1,335 @@
+---
+const items = [
+  {
+    id: 1,
+    title: "Recepción Aura Principal",
+    category: "espacios",
+    image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=85",
+    description: "Espacio de bienvenida diseñado bajo principios de minimalismo cálido y relajación."
+  },
+  {
+    id: 2,
+    title: "Cabina de Armonización Facial",
+    category: "espacios",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
+    description: "Equipada con tecnología lumínica de última generación y camillas ergonómicas."
+  },
+  {
+    id: 3,
+    title: "Consultorio de Diagnóstico Médico",
+    category: "espacios",
+    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=85",
+    description: "Área privada para la evaluación clínica personalizada con la Dra. Valentina Bianco."
+  },
+  {
+    id: 4,
+    title: "Tratamiento de Peeling Ultrasónico",
+    category: "tratamientos",
+    image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=85",
+    description: "Higiene facial profunda con eliminación de impurezas mediante ondas ultrasónicas."
+  },
+  {
+    id: 5,
+    title: "Aplicación de Activos Antiedad",
+    category: "tratamientos",
+    image: "https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=1200&q=85",
+    description: "Revitalización e hidratación cutánea profunda mediante dermoactivos de vanguardia."
+  },
+  {
+    id: 6,
+    title: "Masaje de Drenaje Linfático Facial",
+    category: "tratamientos",
+    image: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=1200&q=85",
+    description: "Protocolo descongestivo manual para potenciar la luminosidad y contornos."
+  }
+];
+---
+
+<section id="galeria" class="py-24 bg-brand-bg relative overflow-hidden">
+  <!-- Decorative Background Blur -->
+  <div class="absolute inset-0 pointer-events-none opacity-40">
+    <div class="absolute top-1/4 right-0 w-80 h-80 bg-brand-champagne/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 left-0 w-80 h-80 bg-brand-sage/20 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    
+    <!-- Title Area -->
+    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <span class="font-display text-xs tracking-[0.25em] uppercase text-brand-sage-dark font-semibold">Galería de Experiencia</span>
+      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-brand-dark">
+        Viví la Experiencia <span class="font-medium italic text-brand-sage-dark">Aura</span>
+      </h2>
+      <div class="w-12 h-[1px] bg-brand-champagne mx-auto mt-4"></div>
+      <p class="font-sans text-sm sm:text-base text-brand-dark-soft/75 font-light leading-relaxed">
+        Recorré nuestros consultorios de vanguardia y descubrí los resultados reales de nuestros protocolos clínicos enfocados en tu armonía natural.
+      </p>
+    </div>
+
+    <!-- Category Filter Buttons -->
+    <div class="flex justify-center gap-3 md:gap-4 mb-12 flex-wrap">
+      <button 
+        data-filter="all" 
+        class="gallery-filter-btn px-6 py-2.5 rounded-full border border-brand-sage/20 text-xs sm:text-sm font-sans tracking-wider transition-all duration-300 bg-brand-sage text-white shadow-sm"
+      >
+        VER TODO
+      </button>
+      <button 
+        data-filter="espacios" 
+        class="gallery-filter-btn px-6 py-2.5 rounded-full border border-brand-sage/20 text-xs sm:text-sm font-sans tracking-wider transition-all duration-300 text-brand-dark-soft hover:bg-brand-sage/10"
+      >
+        NUESTROS ESPACIOS
+      </button>
+      <button 
+        data-filter="tratamientos" 
+        class="gallery-filter-btn px-6 py-2.5 rounded-full border border-brand-sage/20 text-xs sm:text-sm font-sans tracking-wider transition-all duration-300 text-brand-dark-soft hover:bg-brand-sage/10"
+      >
+        TRATAMIENTOS Y RESULTADOS
+      </button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid">
+      {items.map((item) => (
+        <div 
+          class="gallery-item group relative overflow-hidden rounded-2xl bg-white shadow-md border border-brand-sage/5 aspect-[4/3] cursor-pointer hover:shadow-xl transition-all duration-500"
+          data-category={item.category}
+          data-src={item.image}
+          data-title={item.title}
+          data-desc={item.description}
+        >
+          <!-- Image Layer -->
+          <img 
+            src={item.image} 
+            alt={item.title} 
+            loading="lazy" 
+            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+          />
+          
+          <!-- Elegant Luxury Hover Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex flex-col justify-end p-6">
+            <span class="font-display text-[10px] tracking-[0.2em] text-brand-champagne uppercase font-semibold mb-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+              {item.category === "espacios" ? "Espacios" : "Tratamientos"}
+            </span>
+            <h3 class="font-display text-lg font-medium text-white mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100">
+              {item.title}
+            </h3>
+            <p class="font-sans text-xs text-white/70 font-light leading-relaxed transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">
+              {item.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<!-- Fullscreen Lightbox Modal (Premium Built-in Vanilla JS Modal) -->
+<div 
+  id="gallery-lightbox" 
+  class="fixed inset-0 bg-brand-dark/95 z-[9999] opacity-0 pointer-events-none transition-all duration-400 flex items-center justify-center p-4 backdrop-blur-md"
+  aria-hidden="true"
+>
+  <!-- Close Button -->
+  <button 
+    id="lightbox-close" 
+    class="absolute top-6 right-6 text-white/60 hover:text-white transition-colors duration-300 w-12 h-12 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10"
+    aria-label="Cerrar galería"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <!-- Left Arrow -->
+  <button 
+    id="lightbox-prev" 
+    class="absolute left-4 md:left-8 text-white/60 hover:text-white transition-colors duration-300 w-12 h-12 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10"
+    aria-label="Imagen anterior"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+    </svg>
+  </button>
+
+  <!-- Right Arrow -->
+  <button 
+    id="lightbox-next" 
+    class="absolute right-4 md:right-8 text-white/60 hover:text-white transition-colors duration-300 w-12 h-12 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10"
+    aria-label="Siguiente imagen"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+    </svg>
+  </button>
+
+  <!-- Main Content Area -->
+  <div class="max-w-5xl w-full flex flex-col items-center">
+    <!-- Image Wrapper with aspect ratio control -->
+    <div class="relative max-h-[75vh] w-full flex justify-center items-center overflow-hidden rounded-xl">
+      <img 
+        id="lightbox-img" 
+        src="" 
+        alt="" 
+        class="max-w-full max-h-[70vh] object-contain rounded-lg shadow-2xl opacity-0 scale-95 transition-all duration-300"
+      />
+    </div>
+    <!-- Detailed Caption panel -->
+    <div class="text-center mt-6 max-w-2xl px-4 space-y-2">
+      <h4 id="lightbox-title" class="font-display text-xl font-medium text-white"></h4>
+      <p id="lightbox-desc" class="font-sans text-xs sm:text-sm text-brand-sage-light/75 font-light leading-relaxed"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Gallery Filtering Logic
+    const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filterValue = btn.getAttribute('data-filter');
+
+        // Toggle active button styles
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-brand-sage', 'text-white', 'shadow-sm');
+          b.classList.add('text-brand-dark-soft', 'hover:bg-brand-sage/10');
+        });
+        btn.classList.add('bg-brand-sage', 'text-white', 'shadow-sm');
+        btn.classList.remove('text-brand-dark-soft', 'hover:bg-brand-sage/10');
+
+        // Filter items
+        galleryItems.forEach(item => {
+          const itemCategory = item.getAttribute('data-category');
+          if (filterValue === 'all' || itemCategory === filterValue) {
+            item.classList.remove('hidden');
+            // Subtle fade-in trigger
+            item.style.opacity = '0';
+            setTimeout(() => {
+              item.style.opacity = '1';
+            }, 50);
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Premium Lightbox Logic
+    const lightbox = document.getElementById('gallery-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDesc = document.getElementById('lightbox-desc');
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+
+    let activeItems = Array.from(galleryItems); // Tracks current visible items
+    let currentIndex = 0;
+
+    // Open Lightbox
+    const openLightbox = (index) => {
+      if (!lightbox || !lightboxImg || !lightboxTitle || !lightboxDesc) return;
+      
+      // Update active items based on current hidden state
+      activeItems = Array.from(galleryItems).filter(item => !item.classList.contains('hidden'));
+      currentIndex = index;
+
+      const currentItem = activeItems[currentIndex];
+      const src = currentItem.getAttribute('data-src');
+      const title = currentItem.getAttribute('data-title');
+      const desc = currentItem.getAttribute('data-desc');
+
+      // Populate elements
+      lightboxImg.setAttribute('src', src);
+      lightboxImg.setAttribute('alt', title);
+      lightboxTitle.textContent = title;
+      lightboxDesc.textContent = desc;
+
+      // Show modal
+      lightbox.classList.remove('pointer-events-none', 'opacity-0');
+      lightbox.classList.add('opacity-100');
+      
+      // Trigger smooth zoom transition on the image
+      setTimeout(() => {
+        lightboxImg.classList.remove('opacity-0', 'scale-95');
+        lightboxImg.classList.add('opacity-100', 'scale-100');
+      }, 100);
+    };
+
+    // Close Lightbox
+    const closeLightbox = () => {
+      if (!lightbox || !lightboxImg) return;
+      lightboxImg.classList.add('opacity-0', 'scale-95');
+      lightboxImg.classList.remove('opacity-100', 'scale-100');
+      
+      setTimeout(() => {
+        lightbox.classList.remove('opacity-100');
+        lightbox.classList.add('pointer-events-none', 'opacity-0');
+      }, 200);
+    };
+
+    // Navigate Lightbox
+    const navigate = (direction) => {
+      if (!lightboxImg || !lightboxTitle || !lightboxDesc) return;
+      lightboxImg.classList.remove('opacity-100', 'scale-100');
+      lightboxImg.classList.add('opacity-0', 'scale-95');
+
+      setTimeout(() => {
+        if (direction === 'next') {
+          currentIndex = (currentIndex + 1) % activeItems.length;
+        } else {
+          currentIndex = (currentIndex - 1 + activeItems.length) % activeItems.length;
+        }
+
+        const nextItem = activeItems[currentIndex];
+        const src = nextItem.getAttribute('data-src');
+        const title = nextItem.getAttribute('data-title');
+        const desc = nextItem.getAttribute('data-desc');
+
+        lightboxImg.setAttribute('src', src);
+        lightboxImg.setAttribute('alt', title);
+        lightboxTitle.textContent = title;
+        lightboxDesc.textContent = desc;
+
+        setTimeout(() => {
+          lightboxImg.classList.remove('opacity-0', 'scale-95');
+          lightboxImg.classList.add('opacity-100', 'scale-100');
+        }, 50);
+      }, 200);
+    };
+
+    // Bind item click events
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const visibleItems = Array.from(galleryItems).filter(i => !i.classList.contains('hidden'));
+        const index = visibleItems.indexOf(item);
+        openLightbox(index);
+      });
+    });
+
+    // Bind control events
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+    if (prevBtn) prevBtn.addEventListener('click', () => navigate('prev'));
+    if (nextBtn) nextBtn.addEventListener('click', () => navigate('next'));
+
+    // Keyboard controls
+    document.addEventListener('keydown', (e) => {
+      if (lightbox && !lightbox.classList.contains('opacity-0')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') navigate('next');
+        if (e.key === 'ArrowLeft') navigate('prev');
+      }
+    });
+
+    // Close on click outside image
+    if (lightbox) {
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+    }
+  });
+</script>
